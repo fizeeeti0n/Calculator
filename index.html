@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="calculator">
+    <div class="top-bar">
+      <input type="color" id="themeColor" title="Pick Theme Color" />
+      <button onclick="toggleScientific()">Scientific</button>
+    </div>
+
+    <div class="display">
+      <div class="previous-operand" id="previousOperand"></div>
+      <div class="current-operand" id="currentOperand">0</div>
+    </div>
+
+    <div class="buttons" id="mainButtons">
+      <button onclick="clearAll()">AC</button>
+      <button onclick="deleteChar()">DEL</button>
+      <button onclick="appendOperator('/')">/</button>
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button onclick="appendOperator('*')">*</button>
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button onclick="appendOperator('-')">-</button>
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button onclick="appendOperator('+')">+</button>
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="appendNumber('.')">.</button>
+      <button class="span-two" onclick="compute()">=</button>
+    </div>
+
+    <div class="buttons scientific hidden" id="scientificButtons">
+      <button onclick="applyFunction('sin')">sin</button>
+      <button onclick="applyFunction('cos')">cos</button>
+      <button onclick="applyFunction('tan')">tan</button>
+      <button onclick="applyFunction('log')">log</button>
+      <button onclick="applyFunction('sqrt')">√</button>
+      <button onclick="applyFunction('square')">x²</button>
+      <button onclick="applyFunction('pi')">π</button>
+      <button onclick="applyFunction('e')">e</button>
+    </div>
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
