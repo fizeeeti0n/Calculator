@@ -1,21 +1,55 @@
-body {
+:root {
+    --btn-bg: #4b4b4b;
+    --btn-text: #ffffff;
+    --btn-hover: #5e5e5e;
+    --calc-bg: #2d2d2d;
+  }
+  
+  body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient( #afa2a2, #ca7272);
+    background: linear-gradient(#afa2a2, #c9bf34);
     font-family: 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+  }
+  
+
+  body::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    animation: diagonalWave 5s linear infinite;
+    transform: rotate(45deg);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(50px);
+  }
+  
+  @keyframes diagonalWave {
+    0% {
+      transform: rotate(45deg) translate(-50%, 50%);
+    }
+    100% {
+      transform: rotate(45deg) translate(50%, -50%);
+    }
   }
   
   .calculator {
-    background-color: var(--calc-bg, #000000); 
+    position: relative;
+    z-index: 1;
+    background-color: var(--calc-bg);
+    border-radius: 16px;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
     width: 270px;
-    transition: background-color 0.3s, width 0.3s;
+    transition: width 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   }
+  
   
   .top-bar {
     display: flex;
@@ -23,6 +57,7 @@ body {
     margin-bottom: 10px;
   }
   
+
   .display {
     background-color: #1c1c1c;
     color: white;
@@ -43,6 +78,7 @@ body {
     font-weight: bold;
   }
   
+
   .buttons {
     display: grid;
     grid-template-columns: repeat(4, 60px);
@@ -58,11 +94,12 @@ body {
     background-color: #3e3e3e;
     color: white;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
   }
   
   button:hover {
     background-color: #575757;
+    transform: scale(1.05);
   }
   
   .span-two {
@@ -71,14 +108,16 @@ body {
   
   .scientific {
     margin-top: 15px;
+    display: grid;
     grid-template-columns: repeat(4, 60px);
+    gap: 10px;
   }
   
   .hidden {
     display: none;
   }
   
-  /* Dynamic theme color */
+
   .calculator[data-theme] button {
     background-color: var(--btn-bg);
     color: var(--btn-text);
@@ -87,4 +126,5 @@ body {
   .calculator[data-theme] button:hover {
     background-color: var(--btn-hover);
   }
+
   
